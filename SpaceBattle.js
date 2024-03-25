@@ -16,7 +16,7 @@ function createAlienShip() {
     hull: Math.round(Math.random() * (6 - 3) + 3),
     firepower: Math.round(Math.random() * (4 - 2) + 2),
     accuracy: Math.round((Math.random() * (0.8 - 0.6) + 0.6) * 10) / 10,
-    side: "Alien Ship", // Mark for battle
+    side: "Alien", // Mark for battle
   };
   return shipTemplate;
 }
@@ -45,7 +45,7 @@ function hitTarget(battleships) {
 /* Ship was destryoed (true) or not (false) */
 function getShipcondition(ship) {
   if (ship[1].hull <= 0) {
-    console.log("%c \nShip " + ship[1].side + " was destroyed\n", "color:red;");
+    console.log(`%c \n${ship[1].side} ship was destroyed!\n`, `color:red;`);
     return true;
   } else {
     console.log(
@@ -96,11 +96,12 @@ function spaceBattle(USSAssembly, alienShip, yourName) {
 function startBattle(USSAssembly, alienShips, yourName) {
   USSAssembly.side = yourName;
   let gameStatus = "play";
+  console.log(`\n Attack is ready! Only ${alienShips.length} ships left!\n`);
   //Battle
   while (alienShips.length !== 0 || gameStatus === "") {
     let battleResult = spaceBattle(USSAssembly, alienShips[0], yourName);
     USSAssembly = battleResult.find(({ side }) => side === yourName);
-    alienShips[0] = battleResult.find(({ side }) => side === "Alien Ship");
+    alienShips[0] = battleResult.find(({ side }) => side === "Alien");
     if (USSAssembly.hull <= 0) {
       console.log("%c The USS Assembly has been destroyed. Game over.", "color:red;");
 
@@ -115,10 +116,10 @@ function startBattle(USSAssembly, alienShips, yourName) {
     } else if (alienShips[0].hull !== 0 && USSAssembly.hull !== 0) {
       console.log("You almost destroyed the alien ship. Try again!");
       gameStatus = "repeatAttack";
-      return (gameStatus = "repeatAttack");
-    } else {
-      console.log("\n New attack is ready!");
-    }
+      return (gameStatus = "repeatAttack"); }
+    //  else {
+    //   console.log("\n New attack is ready!");
+    // }
   }
 }
 
