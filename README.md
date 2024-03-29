@@ -61,8 +61,7 @@ The primary objective of this project is to learn and practice JavaScript, focus
 
 To embark on this mission to save Earth:
 
-1. Clone or download this project repository to your local machine.
-2. Open the [Space Battle: The Zorbian Siege](https://htmlpreview.github.io/?https://github.com/Katterina71/JSSpaceBattle/blob/main/index.html) file in a web browser to start the game.
-3. Use the JavaScript console to issue commands and make decisions based on the game prompts.
+Open the [Space Battle: The Zorbian Siege](https://htmlpreview.github.io/?https://github.com/Katterina71/JSSpaceBattle/blob/main/index.html) file in a web browser to start the game.
+Use the JavaScript console to issue commands and make decisions based on the game prompts.
 
 Good luck, Captain! The fate of Earth rests in your hands.
