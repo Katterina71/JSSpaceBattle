@@ -167,7 +167,7 @@ return alienShips;
 
 
 welcomeToGame();
-console.log(`%cPress "s" button on your keyboard to START!\n`, `font-size: 18px; background: azure;`);
+console.log(`%cPress "s" button on your keyboard to START! DO NOT adding it into codeline!\n`, `font-size: 18px; background: azure;`);
 document.addEventListener('keydown', function(event) {
   if (event.key === 's') {
       console.log('Game started!');
