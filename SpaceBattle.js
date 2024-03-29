@@ -45,11 +45,11 @@ function hitTarget(battleships) {
 /* Ship was destryoed (true) or not (false) */
 function getShipcondition(ship) {
   if (ship[1].hull <= 0) {
-    console.log(`%c \n${ship[1].side} ship was destroyed!\n`, `color:red;`);
+    console.log(`%c \n${ship[1].side}'s ship was destroyed!\n`, `color:red;`);
     return true;
   } else {
     console.log(
-      `%c Ship ${ship[1].side} is still alive after ${ship[0].firepower} damage and has ${ship[1].hull} hull`, 'color:#970744; font-size:14px'
+      `%c  ${ship[1].side}'s ship is still alive after ${ship[0].firepower} damage and has ${ship[1].hull} hull`, 'color:#970744; font-size:14px'
     );
     return false;
   }
@@ -114,7 +114,7 @@ function startBattle(USSAssembly, alienShips, playerName) {
         return (gameStatus = "stopGame");
       }
     } else if (alienShips[0].hull !== 0 && USSAssembly.hull !== 0) {
-      console.log(`%cYou almost destroyed the alien ship. Try again!`, `color:1C303E; font-size: 16px`);
+      console.log(`%cGood job! You almost destroyed the alien ship. Try again!`, `color:1C303E; font-size: 16px`);
       gameStatus = "repeatAttack";
       return (gameStatus = "repeatAttack"); }
     //  else {
