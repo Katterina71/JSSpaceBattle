@@ -37,7 +37,7 @@ function hitTarget(battleships) {
   }
   //The hit is unsuccessful
   else {
-    console.log("Missed Target!");
+    console.log("%cMissed Target!", "background:#E5E5E5; color:#716C6C");
     return false;
   }
 }
@@ -49,7 +49,7 @@ function getShipcondition(ship) {
     return true;
   } else {
     console.log(
-      `Ship ${ship[1].side} is still alive after ${ship[0].firepower} damage and has ${ship[1].hull} hull`,
+      `%c Ship ${ship[1].side} is still alive after ${ship[0].firepower} damage and has ${ship[1].hull} hull`, 'color:#970744; font-size:14px'
     );
     return false;
   }
@@ -62,7 +62,7 @@ function swapShips(battleship) {
 }
 
 /*Battle between two ships */
-function spaceBattle(USSAssembly, alienShip, yourName) {
+function spaceBattle(USSAssembly, alienShip, playerName) {
   // Array of to battle ship where battleships[0] - always attack, battleships[1] - victim
   let battleships = [];
   battleships.push(USSAssembly, alienShip);
@@ -80,7 +80,7 @@ function spaceBattle(USSAssembly, alienShip, yourName) {
         break;
       }
       // // ship alive
-      else if (battleships[0].side === yourName) {
+      else if (battleships[0].side === playerName) {
         break;
       } else swapShips(battleships);
     }
@@ -93,14 +93,14 @@ function spaceBattle(USSAssembly, alienShip, yourName) {
 }
 
 // START GAME
-function startBattle(USSAssembly, alienShips, yourName) {
-  USSAssembly.side = yourName;
+function startBattle(USSAssembly, alienShips, playerName) {
+  USSAssembly.side = playerName;
   let gameStatus = "play";
   console.log(`\n Attack is ready! Only ${alienShips.length} ships left!\n`);
   //Battle
   while (alienShips.length !== 0 || gameStatus === "") {
-    let battleResult = spaceBattle(USSAssembly, alienShips[0], yourName);
-    USSAssembly = battleResult.find(({ side }) => side === yourName);
+    let battleResult = spaceBattle(USSAssembly, alienShips[0], playerName);
+    USSAssembly = battleResult.find(({ side }) => side === playerName);
     alienShips[0] = battleResult.find(({ side }) => side === "Alien");
     if (USSAssembly.hull <= 0) {
       console.log("%c The USS Assembly has been destroyed. Game over.", "color:red;");
@@ -109,12 +109,12 @@ function startBattle(USSAssembly, alienShips, yourName) {
     } else if (alienShips[0].hull <= 0) {
       alienShips.shift();
       if (alienShips.length === 0) {
-        console.log(`%c \nCongratulations, Captain ${yourName}! You've defeated the alien fleet.`, `color:green;`);
+        console.log(`%c \nCongratulations, Captain ${playerName}! You've defeated the alien fleet.`, `color:green; font-size: 16px`);
         gameStatus = "stopGame";
         return (gameStatus = "stopGame");
       }
     } else if (alienShips[0].hull !== 0 && USSAssembly.hull !== 0) {
-      console.log("You almost destroyed the alien ship. Try again!");
+      console.log(`%cYou almost destroyed the alien ship. Try again!`, `color:1C303E; font-size: 16px`);
       gameStatus = "repeatAttack";
       return (gameStatus = "repeatAttack"); }
     //  else {
@@ -123,40 +123,17 @@ function startBattle(USSAssembly, alienShips, yourName) {
   }
 }
 
-console.log(
-  "%c Starting the battle between the USS Assembly and alien ships\n",
-  "font-size: 20px",
-);
-console.log("Generating the alien fleet with random attributes for each ship.\n");
-for (let i = 0; i < numberOfShips; i++) {
-  alienShips.push(createAlienShip());
-}
-
-console.log("The alien fleet: ");
-alienShips.forEach((obj) => {
-  console.log(obj);
-});
-console.log(`\nAlien fleet is ready!\n`);
-
-
-let yourName = "";
-var prompt = require("prompt-sync")();
-yourName = prompt("What is your name, captain?  ");
-
-console.log(`\nWelcome, Captain ${yourName}! Prepare for battle.`);
-
-console.log(`\nThe battle starts now!\n`);
-let gamestatus = "repeatAttack";
-
+function gameSpaceBattle(playerName) {
+  let gamestatus = "repeatAttack";
 while (gamestatus === "repeatAttack") {
-  gamestatus = startBattle(USSAssembly, alienShips, yourName);
+  gamestatus = startBattle(USSAssembly, alienShips, playerName);
   if (gamestatus !== "repeatAttack") {
     break;
   } else {
 
     questionRepeatGame = prompt("\nRepeat Attack? Press ENTER to continue!\n");
     if (questionRepeatGame.toLowerCase() === "") {
-      console.log("\nStart Attack!\n");
+      console.log("%c Repeat Attack!\n","font-size:16px; color:blue");
  
     } else {
       console.log("Thank you for playing!");
@@ -165,3 +142,46 @@ while (gamestatus === "repeatAttack") {
   }
 }
 console.log("Game Over");
+
+}
+
+function welcomeToGame(){
+
+console.log(
+  "%c Starting the battle between the USS Assembly and Zorbian fleet!\n",
+  "font-size: 20px; background:#1C303E; color:white",
+);
+console.log("Generating the Zorbian fleet with random attributes for each ship.\n");
+for (let i = 0; i < numberOfShips; i++) {
+  alienShips.push(createAlienShip());
+}
+
+console.log("The Zorbian fleet: ");
+alienShips.forEach((obj) => {
+  console.log(obj);
+});
+console.log(`\Zorbian fleet is ready!\n`);
+
+return alienShips;
+}
+
+
+welcomeToGame();
+console.log(`%cPress "s" button on your keyboard to START!\n`, `font-size: 18px; background: azure;`);
+document.addEventListener('keydown', function(event) {
+  if (event.key === 's') {
+      console.log('Game started!');
+     
+
+let playerName = "";
+// var prompt = require("prompt-sync")();
+playerName = prompt("What is your name, Captain?  ");
+
+console.log(`\%cWelcome, Captain ${playerName}! Prepare for battle.`, `color:#1C303E ; font-size: 16px`);
+
+console.log(`\nBE READY! The battle starts now!\n`);
+
+gameSpaceBattle(playerName);
+
+}
+});

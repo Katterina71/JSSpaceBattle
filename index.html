@@ -3,9 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
-<body>
+<style>
+    .text_block {
+        color: rgb(247, 247, 247);
+        font-size:18px;   
+    }
+
+    .div_block {
+        color: rgb(255, 255, 255);
+        width: 500px;
+        height: 850px;
+        background-color: rgb(30, 46, 60);
+        border-radius: 10px; margin-left: 10%;
+        margin-top: 100px;
+        font-family: 'Space Grotesk', sans-serif; 
+        opacity: 0.8;
+       
+        position: relative; 
+
+    }
+    .div_text {
+        position: absolute;
+        opacity: 100%;
+        padding: 40px;
+        
+        z-index: -1;
+    }
+
+
+</style>
+<body style="background-image: url(./bg2.webp); width: 100%; height: 500px; background-size: cover; background-attachment: fixed;  background-repeat: no-repeat;">
+    <div class="div_block">
+        <div class="div_text">
+            <h1 style="text-align: center; color:rgb(253, 251, 251)">Space Battle: The Zorbian Siege</h1>   
+            <p class = "text_block">Welcome to the Space Battle, a text-based adventure game that unfolds within the confines of your web browser's developer console.</p>
+            <p class = "text_block">This game brings the thrill of intergalactic warfare to the simplicity of text commands, allowing you to command the USS Assembly in a daring conflict against a fleet of alien invaders.</p>
+            <hr>
+            <h2 style="text-align: center; color:rgb(255, 254, 254)">Your Mission:</h2>   
+            <p class = "text_block">As the USS Assembly confronts the Zorbian fleet near a dying star, Captain Lee, amidst blaster chaos, calls for your aid in this critical battle. Your support is vital to secure a victory that will stand as a testament to human resilience across the cosmos.</p>
+            <p class = "text_block">Good Luck, Captain!</p>
+            <hr>
+            <p class = "text_block" style="text-align: center; padding-top: 10px;">Open Browser Console and follow the instructions:</pp>
+            <p class = "text_block"style="text-align: center;"> MAC OS: Option + ⌘ + C</p>
+            <p class = "text_block"style="text-align: center;">  Windows/Linux OS: Ctrl+Shift+J</p>
+     <div>
+</div>
+    </div>
     <script src="SpaceBattle.js"></script>
+    <!-- <script src="test.js"></script> -->
 </body>
 </html>
