@@ -180,7 +180,7 @@ console.log(`\nBE READY! The battle starts now!\n`);
 gameSpaceBattle(playerName);
 let questionRestartGame = true;
 while (questionRestartGame === true) {
-questionRestartGame = confirm("\nThe Zorbian fleet is regrouping. Do you want to engage in another battle?");
+questionRestartGame = confirm("\nThe Zorbian fleet is regrouping. Do you want to reload and engage in another battle?");
 if (questionRestartGame) {
   alienFleet(numberOfShips);
   console.log("%c Restarting the game...\n","font-size:16px; color:blue");   
