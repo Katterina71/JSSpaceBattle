@@ -1,5 +1,5 @@
 //Your spaceship, the USS Assembly
-let USSAssembly = {
+const USSAssemblyDefault = {
   hull: 20,
   firepower: 5,
   accuracy: 0.7,
@@ -125,6 +125,7 @@ function startBattle(USSAssembly, alienShips, playerName) {
 
 function gameSpaceBattle(playerName) {
   let gamestatus = "repeatAttack";
+  let USSAssembly = USSAssemblyDefault;
 while (gamestatus === "repeatAttack") {
   gamestatus = startBattle(USSAssembly, alienShips, playerName);
   if (gamestatus !== "repeatAttack") {
@@ -145,43 +146,50 @@ console.log("Game Over");
 
 }
 
-function welcomeToGame(){
+function alienFleet(numberOfShips){
+
+  console.log("Generating the Zorbian fleet with random attributes for each ship.\n");
+  for (let i = 0; i < numberOfShips; i++) {
+    alienShips.push(createAlienShip());
+  }
+  
+  console.log("The Zorbian fleet: ");
+  alienShips.forEach((obj) => {
+    console.log(obj);
+  });
+  console.log(`\Zorbian fleet is ready!\n`);
+  
+  return alienShips;
+  }
+
 
 console.log(
   "%c Starting the battle between the USS Assembly and Zorbian fleet!\n",
   "font-size: 20px; background:#1C303E; color:white",
 );
-console.log("Generating the Zorbian fleet with random attributes for each ship.\n");
-for (let i = 0; i < numberOfShips; i++) {
-  alienShips.push(createAlienShip());
-}
-
-console.log("The Zorbian fleet: ");
-alienShips.forEach((obj) => {
-  console.log(obj);
-});
-console.log(`\Zorbian fleet is ready!\n`);
-
-return alienShips;
-}
-
-
-welcomeToGame();
-console.log(`%cPress "s" button on your keyboard to START! DO NOT adding it into codeline!\n`, `font-size: 18px; background: azure;`);
+alienFleet(numberOfShips);
+console.log(`%cClick on webpage and Press "s" button on your keyboard to START!\n`, `font-size: 18px; background: azure;`);
 document.addEventListener('keydown', function(event) {
   if (event.key === 's') {
-      console.log('Game started!');
-     
-
+      console.log('Game started!');    
 let playerName = "";
+
 // var prompt = require("prompt-sync")();
 playerName = prompt("What is your name, Captain?  ");
-
 console.log(`\%cWelcome, Captain ${playerName}! Prepare for battle.`, `color:#1C303E ; font-size: 16px`);
-
 console.log(`\nBE READY! The battle starts now!\n`);
-
 gameSpaceBattle(playerName);
-
+let questionRestartGame = true;
+while (questionRestartGame === true) {
+questionRestartGame = confirm("\nThe Zorbian fleet is regrouping. Do you want to engage in another battle?");
+if (questionRestartGame) {
+  alienFleet(numberOfShips);
+  console.log("%c Restarting the game...\n","font-size:16px; color:blue");   
+  gameSpaceBattle(playerName); 
+  
 }
-});
+else {
+  questionRestartGame = false;
+  console.log("Game over. The universe is safe for now...");}
+}
+}});
