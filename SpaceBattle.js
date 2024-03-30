@@ -132,19 +132,18 @@ while (gamestatus === "repeatAttack") {
     break;
   } else {
 
-    questionRepeatGame = prompt("\nRepeat Attack? Press ENTER to continue!\n");
-    if (questionRepeatGame.toLowerCase() === "") {
+    let questionRepeatGame = confirm("\nDo you want to repeat attack?\n");
+    if (questionRepeatGame) {
       console.log("%c Repeat Attack!\n","font-size:16px; color:blue");
- 
+
     } else {
       console.log("Thank you for playing!");
       break;
     }
   }
 }
-console.log("Game Over");
-
 }
+
 
 function alienFleet(numberOfShips){
 
