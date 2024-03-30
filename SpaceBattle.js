@@ -123,7 +123,7 @@ function startBattle(USSAssembly, alienShips, playerName) {
   }
 }
 
-function gameSpaceBattle(playerName) {
+function gameSpaceBattle(playerName, USSAssemblyDefault) {
   let gamestatus = "repeatAttack";
   let USSAssembly = USSAssemblyDefault;
 while (gamestatus === "repeatAttack") {
@@ -177,14 +177,14 @@ let playerName = "";
 playerName = prompt("What is your name, Captain?  ");
 console.log(`\%cWelcome, Captain ${playerName}! Prepare for battle.`, `color:#1C303E ; font-size: 16px`);
 console.log(`\nBE READY! The battle starts now!\n`);
-gameSpaceBattle(playerName);
+gameSpaceBattle(playerName,USSAssemblyDefault);
 let questionRestartGame = true;
 while (questionRestartGame === true) {
 questionRestartGame = confirm("\nThe Zorbian fleet is regrouping. Do you want to reload and engage in another battle?");
 if (questionRestartGame) {
   alienFleet(numberOfShips);
   console.log("%c Restarting the game...\n","font-size:16px; color:blue");   
-  gameSpaceBattle(playerName); 
+  gameSpaceBattle(playerName,USSAssemblyDefault); 
   
 }
 else {
