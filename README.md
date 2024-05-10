@@ -8,6 +8,9 @@ The game's logic and flow are designed to be straightforward, yet engaging, prov
 
 Ready to Battle? [Space Battle: The Zorbian Siege](https://htmlpreview.github.io/?https://github.com/Katterina71/JSSpaceBattle/blob/main/index.html).
 
+## **Example**
+![](https://github.com/Katterina71/JSSpaceBattle/blob/main/info/Battle.gif)
+
 ## **Game Mechanics**
 
 The game operates on a turn-based system where you, as the captain of the USS Assembly, battle against a series of alien ships. The aliens have a tactical disadvantage; they attack one at a time, allowing you to take down their fleet ship by ship.
